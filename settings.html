@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/block.css">
+<html>
+<head>
+<title>kiosksettings</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Настройки киоска</h1>
+    <div>
+        <p>Здесь можно применить необходимые настройки для киоска</p>
+    </div>
+    <h1>Домашняя страница</h1>
+    <div id="rectangle">
+        <p>
+            Задать домашнюю страницу
+            <form>
+                <input type="text" id="homepage" placeholder="Введите url">
+                <button type="button" id="acceptbtn">
+                    Принять
+                </button>
+            </form>
+        </p>
+    </div>
+    <h1>Дополнительные кнопки</h1>
+    <div>
+        <p>
+            <form>
+                <input type="checkbox" id="enablexbtns"></input>
+                <span>разрешить дополнительные кнопки</span>
+            </form>
+            <form>
+                <input type="checkbox" id="hideonhp"></input>
+                <span>скрыть на домашней странице</span>
+            </form>
+        </p>
+    </div>
+    <script src="/js/home.js" defer></script>
+    <script src="/js/extra.js" defer></script>
+</body>
+</html>

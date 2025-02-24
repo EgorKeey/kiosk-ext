@@ -1,0 +1,23 @@
+p{
+  font-weight:bold;
+  font-size:14px;
+  color:#FFE4C4;
+}
+
+span{
+  font-weight:bold;
+  font-size:14px;
+  color:#FFE4C4;
+}
+h1{
+  color:#8B0000;
+}
+body{
+  background-color:##f2f9ff;
+}
+
+div{
+  display: inline-block;
+  border-radius: 5px;
+  background-color:#7d7575;
+}
