@@ -1,17 +1,39 @@
-const extracheck = document.getElementById("enablexbtn");
-const extracheck = document.getElementById("hideonhp");
-const extracheck = document.getElementById("acceptbtn");
+var extracheck = document.getElementById("enablexbtn");
+var hider = document.getElementById("hideonhp");
+var accepter = document.getElementById("acceptbtn");
 
-if(enablexbtn.checked!=true)
-{
-  return;
-}
+onPageLoad()
 
-
-function addNewButton(){
-  if (!extracheck.target.checked){
+extracheck?.addEventListener("change", function(){
+  console.log(extracheck.checked);
+  if (extracheck.checked){
+    addNewButton();
+  }
+  else{
     return;
   }
+  savedCheckBox();
+});
+
+
+function checkboxIs(){
+  if (extracheck.checked){
+    addNewButton();
+  }
+  else{
+    return;
+}
+};
+
+function onPageLoad(){
+  extracheck.checked=localStorage.getItem("savedcheckbox")
+}
+
+function savedCheckBox(){
+  localStorage.setItem("savedcheckbox", extracheck.checked);
+}
+
+function addNewButton(){
   let div = document.createElement('div');
   div.className = "backbtn";
   div.innerHTML = "<button type=\"button\" id=\"bbtn\">Я кнопка</button>";
@@ -29,3 +51,4 @@ function hideHomePage(){
   $('.backbtn').click(function(){
   ;
   });
+  
