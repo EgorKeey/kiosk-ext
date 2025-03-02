@@ -1,11 +1,10 @@
-var extracheck = document.getElementById("enablexbtn");
+var extracheck = document.getElementById("enablexbtns");
 var hider = document.getElementById("hideonhp");
 var accepter = document.getElementById("acceptbtn");
 
 onPageLoad()
 
 extracheck?.addEventListener("change", function(){
-  console.log(extracheck.checked);
   if (extracheck.checked){
     addNewButton();
   }
@@ -15,28 +14,20 @@ extracheck?.addEventListener("change", function(){
   savedCheckBox();
 });
 
-
-function checkboxIs(){
-  if (extracheck.checked){
-    addNewButton();
-  }
-  else{
-    return;
-}
-};
-
 function onPageLoad(){
   extracheck.checked=localStorage.getItem("savedcheckbox")
 }
 
 function savedCheckBox(){
-  localStorage.setItem("savedcheckbox", extracheck.checked);
+  localStorage.setItem("savedcheckbox", extracheck);
 }
 
 function addNewButton(){
+  let br = document.createElement('br');
   let div = document.createElement('div');
   div.className = "backbtn";
   div.innerHTML = "<button type=\"button\" id=\"bbtn\">Я кнопка</button>";
+  document.body.append(br);
   document.body.append(div);
 }
 
@@ -48,7 +39,4 @@ function hideHomePage(){
   acceptbtn.style.visibility='hidden';
 }
 
-  $('.backbtn').click(function(){
-  ;
-  });
   
