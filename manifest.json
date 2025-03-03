@@ -1,11 +1,11 @@
 {
     "name":"Киоск для браузера",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Расширение для навигации и печати страниц браузера в режиме киоска",
     "manifest_version": 3,
     "content_scripts": [{
     "matches":["<all_urls>"],
-    "js":["/js/home.js","/js/extra.js"]
+    "js":["/js/home.js","/js/extra.js","/js/button.js"]
     }],
     "author": "EgojiSoftware",
     "action":{
@@ -25,6 +25,7 @@
             "128": "/icons/ico128.png"
     },
     "permissions": [
+    "activeTab",
     "storage",
     "webNavigation"
   ]

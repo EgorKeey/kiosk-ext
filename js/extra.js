@@ -11,8 +11,13 @@ extracheck?.addEventListener("change", function(){
   else{
     return;
   }
-  savedCheckBox();
+  // updateCheckbox();
+  // savedCheckBox();
 });
+
+function updateCheckbox(){
+  extracheck = extracheck.checked;
+}
 
 function onPageLoad(){
   extracheck.checked=localStorage.getItem("savedcheckbox")
@@ -22,11 +27,11 @@ function savedCheckBox(){
   localStorage.setItem("savedcheckbox", extracheck);
 }
 
-function addNewButton(){
+function addNewButtonSettings(){
   let br = document.createElement('br');
   let div = document.createElement('div');
   div.className = "backbtn";
-  div.innerHTML = "<button type=\"button\" id=\"bbtn\">Я кнопка</button>";
+  div.innerHTML = "<h2>Настройка кнопки</h2><button type=\"button\" id=\"bbtn\">Я кнопка</button>";
   document.body.append(br);
   document.body.append(div);
 }
