@@ -1,11 +1,17 @@
-const homeButtonData = JSON.parse(localStorage.getItem('homeButtonData'));
-var homebutton = document.createElement('button');
-    homebutton.innerText = homeButtonData.text;
-    document.body.appendChild(homebutton);
-    homebutton.style.position = homeButtonData.style.position;
-    homebutton.style.bottom = homeButtonData.style.bottom;
-    homebutton.style.right = homeButtonData.style.right;
-    homebutton.style.zIndex = homeButtonData.style.zIndex;
-    homebutton.style.padding = homeButtonData.style.padding;
+var hbtntxt = localStorage.getItem("savedhbt");
 
-document.body.appendChild(homebutton);
+fetch('/json/config.json')
+.then(response =>{
+    if(!response.ok){
+        throw new Error('Network is not answer');
+    }
+    return response.json();
+})
+.then(data => {
+    const btn = 
+    document.createElement('button');
+    btn.innerText=hbtntxt.value;
+    for (const[key,value] of Object.entries(data.styles)){
+        btn.style[key]=value;
+    }
+    document.body.appendChild(btn);});

@@ -6,7 +6,7 @@ onPageLoad()
 
 extracheck?.addEventListener("change", function(){
   if (extracheck.checked){
-    addNewButton();
+    addNewButtonSettings();
   }
   else{
     return;
@@ -16,11 +16,11 @@ extracheck?.addEventListener("change", function(){
 });
 
 function updateCheckbox(){
-  extracheck = extracheck.checked;
+
 }
 
 function onPageLoad(){
-  extracheck.checked=localStorage.getItem("savedcheckbox")
+  
 }
 
 function savedCheckBox(){

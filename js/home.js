@@ -1,5 +1,5 @@
 const acceptBtn = document.getElementById('acceptbtn');
-var homebutton = document.createElement('button');
+var btn = document.createElement('button');
 homeid = document.getElementById("homepage")
 hbtntxt = document.getElementById("homebtntext");
 let address;
@@ -7,13 +7,15 @@ onPageLoad();
 
 
 acceptBtn.addEventListener('click', function() {
-  if (homeid.value == ''){
+  if(window.location.pathname === '/settings'){
+    if (homeid.value == ''){
+      savehp();
+      return;
+    }
+    updateAddress();
     savehp();
-    return;
+    createHomeButton();
   }
-  updateAddress();
-  savehp();
-  createHomeButton();
 });
 
 function load(x)
@@ -38,26 +40,21 @@ function load(x)
   }
 
   function createHomeButton(){
-    homebutton.innerText = hbtntxt.value;
-    homebutton.style.position = 'fixed';
-    homebutton.style.bottom = '20px';
-    homebutton.style.right = '20px';
-    homebutton.style.zIndex = '1000';
-    homebutton.style.padding = '10px';
-
-    localStorage.setItem('homeButtonData', JSON.stringify({
-      text: homebutton.innerText,
-      styles:{
-        position: homebutton.style.position,
-        bottom: homebutton.style.bottom,
-        right: homebutton.style.right,
-        zIndex: homebutton.style.zIndex,
-        padding: homebutton.style.padding
-      }
-    }));
-    document.body.appendChild(homebutton);
+    fetch('/json/config.json')
+.then(response =>{
+    if(!response.ok){
+        throw new Error('Network is not answer');
+    }
+    return response.json();
+})
+.then(data => {
+    btn.innerText=hbtntxt.value;
+    for (const[key,value] of Object.entries(data.styles)){
+        btn.style[key]=value;
+    }
+    document.body.appendChild(btn);});
   }
 
-  homebutton.addEventListener('click', ()=>{
+  btn.addEventListener('click', ()=>{
     load(address)
   });
