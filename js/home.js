@@ -1,13 +1,14 @@
 const acceptBtn = document.getElementById('acceptbtn');
 var btn = document.createElement('button');
-homeid = document.getElementById("homepage")
-hbtntxt = document.getElementById("homebtntext");
+homeid = document.getElementById('homepage')
+hbtntxt = document.getElementById('homebtntext');
+const enablehbcheck = document.getElementById('enablehb');
+const isChecked = localStorage.getItem('checkboxState') === 'true'
 let address;
 onPageLoad();
 
 
 acceptBtn.addEventListener('click', function() {
-  if(window.location.pathname === '/settings'){
     if (homeid.value == ''){
       savehp();
       return;
@@ -15,12 +16,12 @@ acceptBtn.addEventListener('click', function() {
     updateAddress();
     savehp();
     createHomeButton();
-  }
+  
 });
 
 function load(x)
     {
-        document.location.href = x;
+        window.location.href = x;
     }
 
   function updateAddress(){
@@ -32,11 +33,20 @@ function load(x)
   function onPageLoad(){
     homeid.value=localStorage.getItem("savedhp");
     hbtntxt.value=localStorage.getItem("savedhbt");
+    enablehbcheck.checked = isChecked;
+    if(enablehbcheck.checked){
+      createHomeButton();
+    }
   }
+
+  enablehbcheck.addEventListener('change',function(){
+    localStorage.setItem('checkboxState',enablehbcheck.checked);
+  });
 
   function savehp(){
     localStorage.setItem("savedhp", homeid.value);
     localStorage.setItem("savedhbt", hbtntxt.value);
+    localStorage.setItem("savedhb",btn);
   }
 
   function createHomeButton(){
@@ -53,6 +63,7 @@ function load(x)
         btn.style[key]=value;
     }
     document.body.appendChild(btn);});
+    localStorage.setItem("savedhb",btn);
   }
 
   btn.addEventListener('click', ()=>{
