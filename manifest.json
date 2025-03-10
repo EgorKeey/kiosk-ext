@@ -5,11 +5,10 @@
     "manifest_version": 3,
     "content_scripts": [{
     "matches":["<all_urls>"],
-    "js":["/js/home.js","/js/extra.js","/js/button.js"]
+    "js":["/js/home.js","/js/extra.js","/js/button.js","/js/background.js"]
     }],
     "author": "EgojiSoftware",
     "action":{
-        "default_popup": "index.html",
         "default_title": "Киоск для браузера",
         "default_icon":{
         "16": "/icons/ico16.png",
@@ -18,6 +17,9 @@
         "128": "/icons/ico128.png"
         }
     },
+    "background":{
+      "service_worker": "/js/background.js"
+    },
     "icons": {
             "16": "/icons/ico16.png",
             "32": "/icons/ico32.png",
@@ -25,6 +27,7 @@
             "128": "/icons/ico128.png"
     },
     "permissions": [
+    "tabs",
     "activeTab",
     "storage",
     "webNavigation"

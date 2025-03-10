@@ -1,4 +1,7 @@
 {
+    "id":"",
+    "name":"",
+    "address": "",
     "styles":{
     "position": "fixed",
     "bottom":"20px",

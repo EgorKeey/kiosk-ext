@@ -1,6 +1,9 @@
 var hbtntxt = localStorage.getItem("savedhbt");
-
-fetch('/json/config.json')
+chrome.runtime.onMessage.addListener
+((request, sender, sendResponse)=>
+    {
+        if (request.action === "addButton"){
+            fetch('/json/config.json')
 .then(response =>{
     if(!response.ok){
         throw new Error('Network is not answer');
@@ -15,3 +18,5 @@ fetch('/json/config.json')
         btn.style[key]=value;
     }
     document.body.appendChild(btn);});
+}})
+
