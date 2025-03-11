@@ -1,4 +1,5 @@
 const acceptBtn = document.getElementById('acceptbtn');
+const saveuploadbtn = document.getElementById('saveuploadbtn');
 var btn = document.createElement('button');
 homeid = document.getElementById('homepage')
 hbtntxt = document.getElementById('homebtntext');
@@ -7,24 +8,37 @@ const isChecked = localStorage.getItem('checkboxState') === 'true'
 let address;
 onPageLoad();
 
+saveuploadbtn.addEventListener('click', function(){
+  savehp();
+  updatePage();
+  if(enablehbcheck.checked){
+    btn.style.visibility = 'visible';
+  }
+  else{
+    btn.style.visibility = 'hidden';
+  }
+});
 
+if(enablehbcheck.checked){
 acceptBtn.addEventListener('click', function() {
     if (homeid.value == ''){
       savehp();
       return;
     }
-    updateAddress();
+    updatePage();
     savehp();
     createHomeButton();
   
 });
+}
+
 
 function load(x)
     {
         window.location.href = x;
     }
 
-  function updateAddress(){
+  function updatePage(){
     homeid.value = homeid.value;
     hbtntxt.value = hbtntxt.value;
     address = homeid.value;
