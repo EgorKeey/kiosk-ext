@@ -11,6 +11,7 @@ onPageLoad();
 saveuploadbtn.addEventListener('click', function(){
   savehp();
   updatePage();
+  createHomeButton();
   if(enablehbcheck.checked){
     btn.style.visibility = 'visible';
   }
